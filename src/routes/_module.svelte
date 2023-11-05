@@ -15,7 +15,7 @@
 <div bind:clientHeight={header_height} class="fixed-top"><Header /></div>
   <Container
     fluid={true}
-    class="position-relative pt-4 ps-4 m-0 w-100 overflow-auto"
+    class="position-relative pt-4 ps-4 m-2 w-100 overflow-auto"
     style="top: {header_height}px; height: {window_height - header_height - footer_height - 2}px;"
   >
         <slot />
