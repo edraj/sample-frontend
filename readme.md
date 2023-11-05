@@ -16,5 +16,5 @@ yarn build
 yarn dev
 ```
 
-This project can serve as a minimal cms that leverages file-based routing, svelte and MDSvex
+This project can serve as a minimal flat-file cms in svelte and MDSvex
 
