@@ -4,6 +4,8 @@ import { defineConfig } from "vite";
 import { mdsvex } from "mdsvex";
 import preprocess from "svelte-preprocess";
 
+import { flexMapsPlugin } from '@roxi/routify/plugins';
+
 const production = process.env.NODE_ENV === "production";
 
 export default defineConfig({
@@ -17,6 +19,18 @@ export default defineConfig({
   plugins: [
     routify({
       ssr: { enable: !!production },
+      plugins: [
+        flexMapsPlugin({
+          variationsMap: {
+            default: ['en', 'ar,en', 'kd,en'],
+            // widget: ['en', 'ar', 'kd']
+          }
+        })
+      ],
+      routesDir: {
+        default: 'src/routes',
+        // widget: 'src/widget',
+      }
     }),
     svelte({
       compilerOptions: {
