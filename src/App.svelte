@@ -3,19 +3,47 @@
   import "bootstrap-icons/font/bootstrap-icons.min.css";
   const rtlUrl = new URL('bootstrap/dist/css/bootstrap.rtl.min.css', import.meta.url).href;
   const ltrUrl = new URL('bootstrap/dist/css/bootstrap.min.css', import.meta.url).href;
-  import routes_en from '../.routify/routes.default_en.js'
-  import routes_ar from '../.routify/routes.default_ar.js'
-  import routes_kd from '../.routify/routes.default_kd.js'
+  import routes_en from '../.routify/routes.default_en.js';
+  import routes_ar from '../.routify/routes.default_ar.js';
+  import routes_kd from '../.routify/routes.default_kd.js';
+  import routes from '../.routify/routes.default.js';
+
+  function removeDuplicates(objects) {
+    const uniqueMap = new Map();
+
+    objects.forEach(obj => {
+      uniqueMap.set(obj.name, obj);
+    });
+
+    const uniqueObjects = Array.from(uniqueMap.values());
+    return uniqueObjects;
+  }
 
    async function prepareRouter(lang: string) {
-    console.log("LANG", lang);
+    let base;
     if(lang == 'ar') {
-      return createRouter({routes: routes_ar});
+      base = routes_ar;
+      base.children = removeDuplicates([...routes.children, ...base.children])
     } else if (lang == 'kd') {
-      return createRouter({routes: routes_kd});
+      base = routes_kd;
+      base.children = removeDuplicates([...routes.children, ...base.children])
     } else {
-      return createRouter({routes: routes_en});
+      base = routes_en;
+      base.children = removeDuplicates([...routes.children, ...base.children])
     }
+    return createRouter({
+      routes: base, 
+      urlRewrite: {
+            toInternal: url => {
+                console.log({url})
+                if(url.includes("_en")) return url.replace("_en", ".en");
+                else if(url.includes("_kd")) return url.replace("_kd", ".kd");
+                else if(url.includes("_ar")) return url.replace("_ar", ".ar");
+                else return url;
+            },
+            toExternal: url => url
+        }
+      });
   }
 </script>
 
@@ -65,7 +93,7 @@
 
 
 <div id="routify-app">
-  {#await prepareRouter( ($locale == 'ar')?'_ar':'_kd') then router}
+  {#await prepareRouter($locale) then router}
       <Router {router} />
   {/await}
 </div>

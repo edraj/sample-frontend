@@ -3,7 +3,6 @@ import routify from "@roxi/routify/vite-plugin";
 import { defineConfig } from "vite";
 import { mdsvex } from "mdsvex";
 import preprocess from "svelte-preprocess";
-
 import { flexMapsPlugin } from '@roxi/routify/plugins';
 
 const production = process.env.NODE_ENV === "production";

@@ -31,7 +31,7 @@
       <ul>
           {#each node.children as child (child.path)}
               <li>
-                  <a href={child.path} class:active={$isActive(child.path)}>{child.name.replace(/_(en|ar|kd)$/, "")}</a>
+                  <a href={child.path} class:active={$isActive(child.path)}>{child.name}</a>
               </li>
           {/each}
       </ul>

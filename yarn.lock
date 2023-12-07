@@ -366,10 +366,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@roxi/routify@^3.0.0-next.1":
-  version "3.0.0-next.195"
-  resolved "https://registry.yarnpkg.com/@roxi/routify/-/routify-3.0.0-next.195.tgz#3dee8e5cbc1b4ae1051430457d9be4483df8d470"
-  integrity sha512-wZt+Xpv4KvvKsHXjNL7DMi14N1S6w7oLXGznzMxIVyYSZDQi44sayWZlUwfnaBdlofbnmqPXbEiuzqYQTMxAhA==
+"@roxi/routify@^3.0.0-next.198":
+  version "3.0.0-next.198"
+  resolved "https://registry.yarnpkg.com/@roxi/routify/-/routify-3.0.0-next.198.tgz#f966628299994d5e63eed1a014b4667b6d448bb8"
+  integrity sha512-SR92ULH9ExueLIYQtDXhHRAkiWXoAgb/g/F2BBgETnuKj0MgC2HqKmld7oUl2ABWiAQfLhWNRCTUf8/5eBenfA==
   dependencies:
     "@sveltejs/vite-plugin-svelte" "^2.4.6"
     cachewrap "^0.0.1"
