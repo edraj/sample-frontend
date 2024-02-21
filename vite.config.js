@@ -3,7 +3,7 @@ import routify from "@roxi/routify/vite-plugin";
 import { defineConfig } from "vite";
 import { mdsvex } from "mdsvex";
 import preprocess from "svelte-preprocess";
-import { flexMapsPlugin } from '@roxi/routify/plugins';
+import pluginRewriteAll from 'vite-plugin-rewrite-all';
 
 const production = process.env.NODE_ENV === "production";
 
@@ -16,19 +16,11 @@ export default defineConfig({
   },
 
   plugins: [
+    pluginRewriteAll(),
     routify({
       ssr: { enable: !!production },
-      plugins: [
-        flexMapsPlugin({
-          variationsMap: {
-            default: ['en', 'ar,en', 'kd,en'],
-            // widget: ['en', 'ar', 'kd']
-          }
-        })
-      ],
       routesDir: {
         default: 'src/routes',
-        // widget: 'src/widget',
       }
     }),
     svelte({

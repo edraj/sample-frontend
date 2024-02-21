@@ -10,12 +10,6 @@
   let footer_height: number;
 
   const node = resolveNode(".");
-
-  // let children = [];
-  // node.children.forEach((item) => {
-  //   console.log(item.name);
-  // });
-
 </script>
 
 <svelte:window bind:innerHeight={window_height} />
